@@ -21,3 +21,12 @@ if you don't want to install it globally:
 
 `npm install --save-dev nodemon`
 then return
+
+
+
+`https://github.com/pugjs/pug-loader/issues/8` explains why you add the following to your config
+```
+node: {
+    fs: "empty"
+}
+```
