@@ -1,6 +1,8 @@
-const path = require('path');
+const path    = require('path');
 const webpack = require('webpack');
-
+const dotenv  = require('dotenv');
+const utils   = require('./lib/utils/utils')
+dotenv.load()
 // env
 const buildDirectory = './dist/';
 
@@ -35,7 +37,14 @@ module.exports = {
       },
     }],
   },
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env':{
+        'OCTOPUS_API_KEY': '"{0}"'.format(process.env.OCTOPUS_API_KEY),
+        'OCTOPUS_SERVER' : '"{0}"'.format(process.env.OCTOPUS_SERVER)
+      }
+    })
+  ],
   node: {
     fs: 'empty',
     net: 'empty',

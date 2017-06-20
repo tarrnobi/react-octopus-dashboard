@@ -30,3 +30,22 @@ node: {
     fs: "empty"
 }
 ```
+
+* You can pass server environment parameters to the client as part of the webpack build using plugins. This allows the API key to be set at the server level and each person that loads up the web page is also able to use it. The web page is already pre-authenticated, so it's fairly safe.
+
+The only gotcha here is that you have to explicitly pass your parameters as strings. This is quite easy with variable quoting:
+
+```
+plugins: [
+  new webpack.DefinePlugin({
+    'process.env':{
+      'OCTOPUS_API_KEY': '"{0}"'.format(process.env.OCTOPUS_API_KEY),
+      'OCTOPUS_SERVER' : '"{0}"'.format(process.env.OCTOPUS_SERVER)
+    }
+  })
+],
+```
+
+https://stackoverflow.com/questions/37975819/react-use-environment-variables
+
+https://webpack.js.org/plugins/define-plugin/
