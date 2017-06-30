@@ -15,17 +15,19 @@ import Tenant       from '../lib/components/tenant'
 
 describe('<ProjectGroup />', () => {
   var sandbox = sinon.sandbox.create()
+  const wrapper = shallow(<ProjectGroup
+    tenants={mock_responses.tenant_response}
+    environments={mock_responses.environment_response}
+    projects={mock_responses.project_response}/>)
   afterEach(() => {
     sandbox.restore()
   })
   it('should have a label for the project group', () =>{
-    const wrapper = shallow(<ProjectGroup tenants={mock_responses.tenant_response}/>)
     const element = wrapper.find('span.project_group_name')
     expect(element).to.have.length(1)
   })
   it('should contain sections for tenants', () => {
-    const wrapper = shallow(<ProjectGroup tenants={mock_responses.tenant_response} />)
     const element = wrapper.find(Tenant).first()
-    expect(element.props().name).to.equal('Brendan')
+    expect(element.props().data.Name).to.equal('Brendan')
   })
 })

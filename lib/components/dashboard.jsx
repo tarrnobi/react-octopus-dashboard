@@ -60,21 +60,10 @@ class Dashboard extends React.Component{
     })
   }
 
+
   render(){
     return(
-      <div>
-        <div className="environment_container">
-          {
-            this.state.environments.map((row) => {
-              return (
-                <Environment
-                  key={row.Id}
-                  name={row.Name} />
-              )
-            })
-          }
-        </div>
-        <div className="project_groups_container">
+      <div className="container-fluid">
           {
             this.state.project_groups.map((row) => {
 
@@ -84,16 +73,16 @@ class Dashboard extends React.Component{
                    return group_projects.filter(n => n.Id == project).length
                  })
               })
-              return (
-                <ProjectGroup
-                  key={row.Id}
-                  name={row.Name}
-                  projects={group_projects}
-                  tenants={project_tenants} />
-                )
-              })
+                return (
+                  <ProjectGroup
+                    key={row.Id}
+                    name={row.Name}
+                    projects={group_projects}
+                    tenants={project_tenants}
+                    environments={this.state.environments}/>
+                  )
+            })
           }
-        </div>
       </div>
   )}
 }

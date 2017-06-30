@@ -1,25 +1,58 @@
 import React,  {PropTypes} from 'react'
 var api = require('../helpers/octo_api')
 import utils from '../utils/utils'
+
 import Tenant from './tenant'
+import Environment from './environment'
+
 class ProjectGroup extends React.Component{
   constructor(props){
     super(props)
   }
-  render(){
+
+  render_group_headers(){
     return (
-      <section>
-        <span className="project_group_name">{this.props.name}</span>
+      <tr>
+        <th colSpan={2}>
+          <span className="project_group_name">
+            <strong>{this.props.name}</strong>
+          </span>
+        </th>
         {
-          this.props.tenants.map(row => {
+          this.props.environments.map((row) => {
             return (
-              <Tenant
+              <Environment
                 key={row.Id}
                 name={row.Name} />
               )
-          })
+            })
+          }
+        </tr>
+    )
+  }
+
+  render(){
+    return (
+      <table className="table">
+        <thead>
+          {this.render_group_headers()}
+        </thead>
+        <tbody>
+        {
+          this.props.tenants.map(row => {
+            const tenant_projects = this.props.projects.filter(p => {
+              return Object.keys(row.ProjectEnvironments).includes(p.Id)
+            })
+            return (
+              <Tenant
+                key={row.Id}
+                data={row}
+                projects={tenant_projects}/>
+              )
+            })
         }
-      </section>
+        </tbody>
+      </table>
     )
 
   }

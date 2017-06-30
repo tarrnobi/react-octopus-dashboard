@@ -6,9 +6,9 @@ class Environment extends React.Component{
   }
   render(){
     return(
-      <div className="col">
+      <th>
         <span className="environment_name">{this.props.name}</span>
-      </div>
+      </th>
     )
   }
 }

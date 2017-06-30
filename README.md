@@ -15,7 +15,7 @@ To  get around a silly issue using mocha -w where the sinon sandbox isn't proper
 
 then run
 
-`nodemon -w . -d 0 -e js, jsx --exec npm test`
+`nodemon -w . -d 0 -e js,jsx --exec npm test`
 
 if you don't want to install it globally:
 
