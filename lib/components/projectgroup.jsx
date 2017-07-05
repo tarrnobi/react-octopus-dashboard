@@ -37,7 +37,6 @@ class ProjectGroup extends React.Component{
         <thead>
           {this.render_group_headers()}
         </thead>
-        <tbody>
         {
           this.props.tenants.map(row => {
             const tenant_projects = this.props.projects.filter(p => {
@@ -47,11 +46,11 @@ class ProjectGroup extends React.Component{
               <Tenant
                 key={row.Id}
                 data={row}
-                projects={tenant_projects}/>
+                projects={tenant_projects}
+                environments= {this.props.environments}/>
               )
             })
         }
-        </tbody>
       </table>
     )
 
