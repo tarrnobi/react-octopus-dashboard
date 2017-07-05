@@ -73,6 +73,7 @@ class Dashboard extends React.Component{
                    return group_projects.filter(n => n.Id == project).length
                  })
               })
+              if(project_tenants.length > 0){
                 return (
                   <ProjectGroup
                     key={row.Id}
@@ -81,6 +82,7 @@ class Dashboard extends React.Component{
                     tenants={project_tenants}
                     environments={this.state.environments}/>
                   )
+              }
             })
           }
       </div>

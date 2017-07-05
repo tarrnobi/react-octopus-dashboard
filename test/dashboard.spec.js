@@ -64,21 +64,21 @@ describe('<Dashboard/>',() =>{
     it('should have project group components', (done) => {
       const wrapper = mount(<Dashboard />)
       setImmediate(() => {
-        expect(wrapper.find(ProjectGroup).length).to.equal(3)
+        expect(wrapper.find(ProjectGroup).length).to.equal(2)
         done()
       })
     })
     it('should create project group components that have a name prop', (done) =>{
       const wrapper = mount(<Dashboard />)
       setImmediate(()=>{
-        expect(wrapper.find(ProjectGroup).first().props().name).to.equal('All Projects')
+        expect(wrapper.find(ProjectGroup).first().props().name).to.equal('Group 1')
         done()
       })
     })
     it('should create project group components that have their key set to the project group id' , (done) =>{
       const wrapper = mount(<Dashboard />)
       setImmediate(()=>{
-        expect(wrapper.find(ProjectGroup).first().key()).to.equal('ProjectGroups-1')
+        expect(wrapper.find(ProjectGroup).first().key()).to.equal('ProjectGroups-23')
         done()
       })
     })
@@ -101,7 +101,9 @@ describe('<Dashboard/>',() =>{
   })
   describe('Dashboard/Environment', () =>{
     before(()=>{
-      sandbox.stub(api, 'get_project_groups').resolves(mock_responses.mock_response(mock_responses.environment_response))
+      sandbox.stub(api, 'get_project_groups').resolves(mock_responses.mock_response(mock_responses.project_group_response))
+      sandbox.stub(api, 'get_projects').resolves(mock_responses.mock_response(mock_responses.project_response))
+      sandbox.stub(api, 'get_tenants').resolves(mock_responses.mock_response(mock_responses.tenant_response))
       sandbox.stub(api, 'get_environments').resolves(mock_responses.mock_response(mock_responses.environment_response))
     })
     after(() => {
