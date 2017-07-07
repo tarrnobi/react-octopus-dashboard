@@ -49,3 +49,6 @@ plugins: [
 https://stackoverflow.com/questions/37975819/react-use-environment-variables
 
 https://webpack.js.org/plugins/define-plugin/
+
+
+# Use https://octopus.exceedra-sp.com:10120/api/deployments to get the environment, tenant and project

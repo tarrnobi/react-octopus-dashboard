@@ -27,16 +27,6 @@ describe('helpers/octo_api', () => {
       delete process.env.OCTOPUS_SERVER
       expect(() => api.make_api_call('','get', parameters)).to.throw('Ensure that OCTOPUS_SERVER environment variable is set.')
     })
-
-    // it('should return a list of project groups when given the projectgroups/all endpoint', ()=>{
-    //   var endpoint   = 'projectgroups/all'
-    //   var method     = 'get'
-    //   var parameters = {}
-    //
-    //   return api.make_api_call(endpoint, method, parameters).then( response=>{
-    //     expect(response.body).to.not.equal(0)
-    //   })
-    // })
   })
 
   describe('get_project_groups',() =>{
@@ -158,7 +148,6 @@ describe('helpers/octo_api', () => {
       return api.get_environment()
       .catch(response => {
         expect(response).to.equal("The resource 'Environments-00' was not found")
-
       })
     })
     it('should return a single tenant given the tenant id', () => {
@@ -169,6 +158,38 @@ describe('helpers/octo_api', () => {
       return api.get_environment(environment_id = environment_id)
       .then(response => {
         expect(response.body.Name).to.equal("Local_DEV")
+      })
+    })
+  })
+
+  describe('get_deployments', () => {
+    it('should return a list of all deployments', () =>{
+      const json_response = mock_responses.mock_response(mock_responses.deployment_response)
+      sandbox.stub(rp, 'get').resolves(json_response)
+      return api.get_deployments()
+      .then(response =>{
+        expect(response.body.Items).to.have.length(3)
+      })
+    })
+  })
+  describe('get_deployment', () =>{
+    it('should return a single deployment given the deployment id', ()=>{
+      const json_response  = mock_responses.mock_response(mock_responses.deployment_response.Items[0])
+      var   deployment_id = json_response.Id
+      sandbox.stub(rp, 'get').resolves(json_response)
+      return api.get_deployment(deployment_id)
+      .then(response =>{
+        expect(response.body.Id).to.equal("Deployments-216")
+      })
+    })
+    it('should throw an error message if the given deployment does not exist', () =>{
+      var   deployment_id = 'Deployments-00'
+      const json_response = mock_responses.mock_fail_response(deployment_id)
+      sandbox.stub(rp, 'get').resolves(json_response)
+
+      return api.get_deployment(deployment_id)
+      .catch(response => {
+        expect(response).to.equal("The resource 'Deployments-00' was not found")
       })
     })
   })

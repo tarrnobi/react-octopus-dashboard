@@ -47,7 +47,8 @@ class ProjectGroup extends React.Component{
                 key={row.Id}
                 data={row}
                 projects={tenant_projects}
-                environments= {this.props.environments}/>
+                environments= {this.props.environments}
+                deployments={this.props.deployments}/>
               )
             })
         }

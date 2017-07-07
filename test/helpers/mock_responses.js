@@ -116,9 +116,52 @@ const environment_response = [
 
 ]
 
+const deployment_response = {
+  "ItemType": "Deployment",
+  "IsStale": false,
+  "TotalResults": 86,
+  "ItemsPerPage": 30,
+  "Items": [
+    {
+      "Id": "Deployments-216",
+      "ReleaseId": "Releases-182",
+      "EnvironmentId": "Environments-2",
+      "TenantId": "Tenants-21",
+      "ProjectId": "Projects-45",
+      "ChannelId": "Channels-43",
+      "Name": "Deploy to DEV for Brendan",
+      "Created": "2017-07-06T09:11:03.399+00:00",
+      "Links": {}
+    },
+    {
+      "Id": "Deployments-215",
+      "ReleaseId": "Releases-179",
+      "EnvironmentId": "Environments-3",
+      "TenantId": "Tenants-61",
+      "ProjectId": "Projects-45",
+      "ChannelId": "Channels-43",
+      "Name": "Deploy to qa for Brendan",
+      "Created": "2017-07-05T14:17:27.479+00:00",
+      "Links": {}
+    },
+    {
+      "Id": "Deployments-214",
+      "ReleaseId": "Releases-178",
+      "EnvironmentId": "Environments-2",
+      "TenantId": "Tenants-20",
+      "ProjectId": "Projects-45",
+      "ChannelId": "Channels-43",
+      "Name": "Deploy to DEV for Joseph",
+      "Created": "2017-07-05T10:01:18.860+00:00",
+      "Links": {}
+    }
+  ]
+}
+
 exports.project_group_response = project_group_response
 exports.project_response       = project_response
 exports.tenant_response        = tenant_response
 exports.environment_response   = environment_response
+exports.deployment_response    = deployment_response
 exports.mock_response          = mock_response
 exports.mock_fail_response     = mock_fail_response

@@ -12,6 +12,7 @@ class Dashboard extends React.Component{
       environments: [],
       projects: [],
       tenants: [],
+      deployments:[],
     }
   }
 
@@ -20,6 +21,7 @@ class Dashboard extends React.Component{
     this.get_environments()
     this.get_projects()
     this.get_tenants()
+    this.get_deployments()
   }
 
   get_project_groups(){
@@ -59,6 +61,15 @@ class Dashboard extends React.Component{
       this.setState({error_message: response})
     })
   }
+  get_deployments(){
+    return api.get_deployments()
+    .then(response =>{
+      this.setState({deployments: response.body.Items})
+    })
+    .catch(response=>{
+      this.setState({error_message:response})
+    })
+  }
 
 
   render(){
@@ -80,7 +91,8 @@ class Dashboard extends React.Component{
                     name={row.Name}
                     projects={group_projects}
                     tenants={project_tenants}
-                    environments={this.state.environments}/>
+                    environments={this.state.environments}
+                    deployments={this.state.deployments}/>
                   )
               }
             })

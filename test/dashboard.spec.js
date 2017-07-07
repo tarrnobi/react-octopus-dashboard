@@ -41,11 +41,49 @@ describe('<Dashboard/>',() =>{
         done()
       })
     })
+    it('should call get_projects on initial load', () =>{
+      sandbox.spy(api, 'get_projects')
+      sandbox.stub(rp, 'get').resolves(mock_responses.mock_response(mock_responses.project_response))
+      const wrapper = mount(<Dashboard />)
+      expect(api.get_projects.called).to.be.true
+    })
+    it('should have projects in state', (done)=>{
+      sandbox.stub(rp, 'get').resolves(mock_responses.mock_response(mock_responses.project_response))
+      const wrapper = mount(<Dashboard />)
+      setImmediate(()=>{
+        expect(wrapper.state().projects).to.have.length(3)
+        done()
+      })
+    })
+    it('should call get_tenants on initial load', () =>{
+      sandbox.spy(api, 'get_tenants')
+      sandbox.stub(rp, 'get').resolves(mock_responses.mock_response(mock_responses.tenant_response))
+      const wrapper = mount(<Dashboard/>)
+      expect(api.get_tenants.called).to.be.true
+    })
+    it('should have tenants in state', (done)=>{
+      sandbox.stub(rp, 'get').resolves(mock_responses.mock_response(mock_responses.tenant_response))
+      const wrapper = mount(<Dashboard/>)
+      setImmediate(() =>{
+        expect(wrapper.state().tenants).to.have.length(2)
+        done()
+      })
+    })
+    it('should call get_deployments on initial load', () =>{
+      sandbox.spy(api, 'get_deployments')
+      sandbox.stub(rp, 'get').resolves(mock_responses.mock_response(mock_responses.deployment_response))
+      const wrapper = mount(<Dashboard />)
+      expect(api.get_deployments.called).to.be.true
+    })
+    it('should have deployments in state', (done) =>{
+      sandbox.stub(rp, 'get').resolves(mock_responses.mock_response(mock_responses.deployment_response))
+      const wrapper = mount(<Dashboard />)
 
-    it('should call get_projects on initial load')
-    it('should have projects in state')
-    it('should call get_tenants on initial load')
-    it('should have tenants in state')
+      setImmediate(()=>{
+        expect(wrapper.state().deployments).to.have.length(3)
+        done()
+      })
+    })
 
   })
 
