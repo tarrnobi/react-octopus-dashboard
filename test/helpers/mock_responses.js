@@ -54,7 +54,7 @@ const project_response = [
     Id: 'Projects-43',
     Name: 'DEV_Project_3',
     ProjectGroupId: 'ProjectGroups-21',
-  },
+  }
 ]
 
 const tenant_response = [
@@ -157,11 +157,41 @@ const deployment_response = {
     }
   ]
 }
+const release_response = {
+  "ItemType": "Release",
+  "IsStale": false,
+  "TotalResults": 117,
+  "ItemsPerPage": 30,
+  "Items": [
+    {
+      "Id": "Releases-252",
+      "Assembled": "2017-07-13T10:22:42.666+00:00",
+      "ProjectId": "Projects-43",
+      "ChannelId": "Channels-43",
+      "Version": "2.9.2.513",
+    },
+    {
+      "Id": "Releases-251",
+      "Assembled": "2017-07-13T09:40:15.461+00:00",
+      "ProjectId": "Projects-44",
+      "ChannelId": "Channels-44",
+      "Version": "2.9.1.97",
+    },
+    {
+      "Id": "Releases-250",
+      "Assembled": "2017-07-12T16:41:47.638+00:00",
+      "ProjectId": "Projects-62",
+      "ChannelId": "Channels-62",
+      "Version": "2.9.1.10",
+    }
+  ]
+}
 
 exports.project_group_response = project_group_response
 exports.project_response       = project_response
 exports.tenant_response        = tenant_response
 exports.environment_response   = environment_response
 exports.deployment_response    = deployment_response
+exports.release_response       = release_response
 exports.mock_response          = mock_response
 exports.mock_fail_response     = mock_fail_response

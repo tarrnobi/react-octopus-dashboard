@@ -193,4 +193,37 @@ describe('helpers/octo_api', () => {
       })
     })
   })
+
+  describe('get_releases', () =>{
+    it('should return a list of releases', () =>{
+      const json_response = mock_responses.mock_response(mock_responses.release_response)
+      sandbox.stub(rp, 'get').resolves(json_response)
+      return api.get_releases()
+      .then(response =>{
+        expect(response.body.Items).to.have.length(3)
+      })
+    })
+  })
+
+  describe('get_release', () =>{
+    it('should return a release given a release ID', () => {
+      const json_response = mock_responses.mock_response(mock_responses.release_response.Items[0])
+      var   release_id = json_response.Id
+      sandbox.stub(rp, 'get').resolves(json_response)
+      return api.get_release(release_id)
+      .then(response=>{
+        expect(response.body.Id).to.equal("Releases-252")
+      })
+    })
+    it('should throw an error if an invalid release ID is given', () =>{
+      var release_id = "Releases-00"
+      const json_response = mock_responses.mock_fail_response(release_id)
+      sandbox.stub(rp, 'get').resolves(json_response)
+
+      return api.get_release(release_id)
+      .catch(response => {
+        expect(response).to.equal("The resource 'Releases-00' was not found")
+      })
+    })
+  })
 })
