@@ -5,13 +5,24 @@ import utils from '../utils/utils'
 class Deployment extends React.Component{
   constructor(props){
     super(props)
+    this.state = {
+      release_data: {}
+    }
+  }
+  componentDidMount(){
+    this.get_release_details()
   }
   get_release_details(){
-    api.get
+    api.get_release(this.props.data.ReleaseId)
+    .then(response => {
+      this.setState({release_data: response.body})
+    })
   }
   render(){
     return(
-      <p className="deployment">Fill Me In</p>
+      <div className="deployment">
+        <span>{this.state.release_data.Version}</span>
+      </div>
     )
   }
 

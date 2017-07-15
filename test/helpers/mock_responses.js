@@ -187,11 +187,29 @@ const release_response = {
   ]
 }
 
+const task_response = {
+  "Id": "ServerTasks-3628",
+  "Name": "Deploy",
+  "Description": "Deploy MASTER_SalesPlanner_E2_DACPAC release 2.9.2.3 to DEV for Corby",
+  "Arguments": {
+    "DeploymentId": "Deployments-275"
+  },
+  "State": "Failed",
+  "Completed": "Friday, July 14, 2017 4:22 PM",
+  "CompletedTime": "2017-07-14T16:22:50.435+00:00",
+  "ServerNode": "SUPERSERVER",
+  "Duration": "4 seconds",
+  "ErrorMessage": "The deployment failed because one or more steps failed. Please see the deployment log for details.",
+  "IsCompleted": true,
+  "FinishedSuccessfully": false,
+}
+
 exports.project_group_response = project_group_response
 exports.project_response       = project_response
 exports.tenant_response        = tenant_response
 exports.environment_response   = environment_response
 exports.deployment_response    = deployment_response
 exports.release_response       = release_response
+exports.task_response          = task_response
 exports.mock_response          = mock_response
 exports.mock_fail_response     = mock_fail_response
