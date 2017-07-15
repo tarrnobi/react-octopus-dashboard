@@ -226,4 +226,20 @@ describe('helpers/octo_api', () => {
       })
     })
   })
+
+  describe('get_task',() =>{
+    it('should return a task given a task ID', () =>{
+
+    })
+    it('should throw an error if an invalid task ID is given', () =>{
+      var task_id = "Task-00"
+      const json_response = mock_responses.mock_fail_response(task_id)
+      sandbox.stub(rp, 'get').resolves(json_response)
+
+      return api.get_task(task_id)
+      .catch(response =>{
+        expect(response).to.equal("The resource 'Task-00' was not found")
+      })
+    })
+  })
 })

@@ -129,6 +129,7 @@ const deployment_response = {
       "TenantId": "Tenants-21",
       "ProjectId": "Projects-45",
       "ChannelId": "Channels-43",
+      "TaskId": "ServerTasks-3628",
       "Name": "Deploy to DEV for Brendan",
       "Created": "2017-07-06T09:11:03.399+00:00",
       "Links": {}
@@ -140,6 +141,7 @@ const deployment_response = {
       "TenantId": "Tenants-61",
       "ProjectId": "Projects-45",
       "ChannelId": "Channels-43",
+      "TaskId": "ServerTasks-3629",
       "Name": "Deploy to qa for Brendan",
       "Created": "2017-07-05T14:17:27.479+00:00",
       "Links": {}
@@ -151,6 +153,7 @@ const deployment_response = {
       "TenantId": "Tenants-20",
       "ProjectId": "Projects-45",
       "ChannelId": "Channels-43",
+      "TaskId": "ServerTasks-3630",
       "Name": "Deploy to DEV for Joseph",
       "Created": "2017-07-05T10:01:18.860+00:00",
       "Links": {}

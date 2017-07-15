@@ -179,6 +179,5 @@ describe('<Dashboard/>',() =>{
       sandbox.restore()
     })
 
-    it('should pass the project through as a prop to the component')
   })
 })

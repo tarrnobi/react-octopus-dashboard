@@ -39,4 +39,15 @@ describe('<Deployment />', ()=>{
     })
 
   })
+
+  it('gets a task object with the status of the deployment', (done)=>{
+    sandbox.stub(api, 'get_release').resolves(mock_responses.mock_response(mock_responses.release_response.Items[0]))
+    sandbox.stub(api, 'get_task').resolves(mock_responses.mock_response(mock_responses.task_response))
+    const wrapper = mount(<Deployment
+      data={mock_responses.mock_response(mock_responses.deployment_response)} />)
+    setImmediate(()=>{
+      expect(wrapper.state().task_data.FinishedSuccessfully).to.equal(false)
+      done()
+    })
+  })
 })

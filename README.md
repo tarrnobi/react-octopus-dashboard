@@ -52,3 +52,5 @@ https://webpack.js.org/plugins/define-plugin/
 
 
 # Use https://octopus.exceedra-sp.com:10120/api/deployments to get the environment, tenant and project
+
+#TODO: Sort out the process that grabs deployments. Take 1000 is probably the wrong approach.
