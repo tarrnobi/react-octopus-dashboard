@@ -44,7 +44,7 @@ class ProjectGroup extends React.Component{
             })
             return (
               <Tenant
-                key={row.Id}
+                key={"{0}-{1}".format(this.props.Id, row.Id)}
                 data={row}
                 projects={tenant_projects}
                 environments= {this.props.environments}

@@ -6,7 +6,7 @@ class Environment extends React.Component{
   }
   render(){
     return(
-      <th>
+      <th style={{width:'12%'}}>
         <span className="environment_name">{this.props.name}</span>
       </th>
     )

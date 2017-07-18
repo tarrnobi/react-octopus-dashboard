@@ -56,8 +56,7 @@ class Dashboard extends React.Component{
     return api.get_tenants()
     .then(response =>{
       this.setState({tenants: response.body})
-    })
-    .catch(response => {
+    }).catch(response => {
       this.setState({error_message: response})
     })
   }
@@ -88,6 +87,7 @@ class Dashboard extends React.Component{
                 return (
                   <ProjectGroup
                     key={row.Id}
+                    Id={row.Id}
                     name={row.Name}
                     projects={group_projects}
                     tenants={project_tenants}

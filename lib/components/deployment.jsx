@@ -18,12 +18,17 @@ class Deployment extends React.Component{
     api.get_release(this.props.data.ReleaseId)
     .then(response => {
       this.setState({release_data: response.body})
+    }).catch(response=>{
+      this.setState({error_message:response})
     })
+
   }
   get_task_details(){
     api.get_task(this.props.data.TaskId)
     .then(response => {
       this.setState({task_data: response.body})
+    }).catch(response=>{
+      this.setState({error_message:response})
     })
   }
 
